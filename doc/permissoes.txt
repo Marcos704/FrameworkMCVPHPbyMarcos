@@ -1,0 +1,36 @@
+## PERMISSÕES DO SISTEMA ##
+*Permissão Geral
+-isUsuarioAtivo: seta o usuário como ativo no sistema
+-vmDashboard: visualizar o dashboard
+-vmUsuario: visualizar o modulo de usuario
+-vmProposta: visualizar o modulo de proposta PF
+-vmBanco: visualizar o modulo de banco
+-vmConfiguracoes: visualizar o modulo de configurações do sistema
+
+*MODULO DE USUÁRIO
+-mCadUsuario : Cadastrar usuario
+-mEditUsuario: Editar usuario
+-mExcludUsuario: Excluir usuario (Por padrão, o usuário não pode se auto-excluir)
+-mListUsuario: Listar Usuario
+
+*MODULO DE PROPOSTA - PF
+-mCadPropostaPF : Cadastrar Proposta PF
+-mEditPropostaPF: Editar Proposta PF
+-mExcludPropostaPF: Excluir Proposta PF
+-mListPropostaPF: Listar Proposta PF
+
+*MODULO DE PROPOSTA - PJ
+-mCadPropostaPJ : Cadastrar Proposta PJ
+-mEditPropostaPJ: Editar Proposta PJ
+-mExcludPropostaPJ: Excluir Proposta PJ
+-mListPropostaPJ: Listar Proposta PJ
+
+*MODULO DE BANCO
+-mCadBanco : Cadastrar Banco
+-mEditBanco: Editar Banco
+-mExcludBanco: Excluir Banco
+-mListBanco: Listar Banco
+
+*MODULO DE CONFIGURACOES
+-mAdministradora: cadastrar/atualizar Administradora
+-mConfSistema: configurações do sistema

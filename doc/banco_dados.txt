@@ -1,0 +1,66 @@
+=== Script Banco de dados ====
+*Sistema: GFitness
+*Criador: Marcos Rocha
+*Empresa: Engcria
+-------------------------------
+=== Informacoes da base dados ===
+*Nome do banco de dados: gfitness_engcria_db;
+*Usuario padrao: suport
+*Senha padrap: swu@660031
+--------------------------------
+=== Tabelas e suas Informacoes ===
++Detalhes
+*Nome da tabela: tbEmpresa
+*Descricao: Armazenar os dados da empresa
+*Rotina: Cadastro e edicao de dados de Empresas
++Informacoes (nomeCampo : Descricao)
+idEmpresa : id da empresa (Chave primaria)
+nmEmpresa : Nome da empresa
+enderecoEmpresa : Endereco da empresa
+cepEmpresa : CEP da empresa
+bairroEmpresa : Bairro da empresa
+cidadeEmpresa : Cidade da empresa
+ufEmpresa : UF da empresa
+foneEmpresa : Telefone da Empresa
+numeroEmpresa : Numero da Empresa (whatsapp)
+cnpjEmpresa : CNPJ da empresa
+ieEmpresa : Inscricao Estadual da empresa
+tituloCarneBoletoEmpresa : Titulo para boleto ou carne (Impressao)
+subTituloCarneBoletoEmpresa : SubTitulo para b*oleto ou carne (Impressao)
+logoEmpresa : Logo da empresa (Impressao e relatorios)
+--------------------------------
++Detalhes
+*Nome da tabela: tbUsuarios
+*Descricao: Armazenar os usuários que poderão acessar o Sistema
+*Rotina: Cadastro e edicao de usuarios
++Informacoes (nomeCampo : Descricao)
+cpfUsuario : CPF do usuário (Chave primaria)
+senhaUsuario : Senha de acesso do usuário
+ativoUsuario : (ativo = 1 | Inativo = 0)
+nmCompletoUsuario : Nome completo do usuário
+emailUsuario : Email do usuários
+dtCadastroUsuario: Data de cadastro do usuário
+--------------------------------
++Detalhes 
+*Nome da tabela: tbAlunos
+*Descricao: Armazenar os alunos da academia
+*Rotina: Cadastro e edicao de alunos
++Informacoes (nomeCampo : Descricao)
+idAluno : Código do aluno (Depois pensar se é necessário)
+dtCadastroAluno : Data de cadastro do aluno
+nmCompletoAluno : Nome completo do aluno
+dtNascimentoAluno : Data de nascimento do aluno
+rgAluno : RG do aluno
+cpfAluno : CPF do aluno
+fotoAluno : Foto do aluno
+num1ContatoAluno : Numero de contato do aluno (whatsapp ou não)
+num2ContatoAluno : Numero de contato do aluno (whatsapp ou não)
+enderecoAluno : Endereco do aluno
+bairroAluno : Bairro do aluno
+cepAluno : CEP do aluno
+cidadeAluno : Cidade do aluno
+ufAluno : Estado do aluno
+emailAluno : Email do aluno
+modalidadeExecicioAluno : Modalidade de exercicios do aluno
+turnoExercicioAluno : Turno em que o aluno irá praticar os exercicios
+statusAluno : Status do aluno (Ativo ou Inativo)
