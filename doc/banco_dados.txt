@@ -1,66 +1,351 @@
-=== Script Banco de dados ====
-*Sistema: GFitness
-*Criador: Marcos Rocha
-*Empresa: Engcria
--------------------------------
-=== Informacoes da base dados ===
-*Nome do banco de dados: gfitness_engcria_db;
-*Usuario padrao: suport
-*Senha padrap: swu@660031
---------------------------------
-=== Tabelas e suas Informacoes ===
-+Detalhes
-*Nome da tabela: tbEmpresa
-*Descricao: Armazenar os dados da empresa
-*Rotina: Cadastro e edicao de dados de Empresas
-+Informacoes (nomeCampo : Descricao)
-idEmpresa : id da empresa (Chave primaria)
-nmEmpresa : Nome da empresa
-enderecoEmpresa : Endereco da empresa
-cepEmpresa : CEP da empresa
-bairroEmpresa : Bairro da empresa
-cidadeEmpresa : Cidade da empresa
-ufEmpresa : UF da empresa
-foneEmpresa : Telefone da Empresa
-numeroEmpresa : Numero da Empresa (whatsapp)
-cnpjEmpresa : CNPJ da empresa
-ieEmpresa : Inscricao Estadual da empresa
-tituloCarneBoletoEmpresa : Titulo para boleto ou carne (Impressao)
-subTituloCarneBoletoEmpresa : SubTitulo para b*oleto ou carne (Impressao)
-logoEmpresa : Logo da empresa (Impressao e relatorios)
---------------------------------
-+Detalhes
-*Nome da tabela: tbUsuarios
-*Descricao: Armazenar os usuários que poderão acessar o Sistema
-*Rotina: Cadastro e edicao de usuarios
-+Informacoes (nomeCampo : Descricao)
-cpfUsuario : CPF do usuário (Chave primaria)
-senhaUsuario : Senha de acesso do usuário
-ativoUsuario : (ativo = 1 | Inativo = 0)
-nmCompletoUsuario : Nome completo do usuário
-emailUsuario : Email do usuários
-dtCadastroUsuario: Data de cadastro do usuário
---------------------------------
-+Detalhes 
-*Nome da tabela: tbAlunos
-*Descricao: Armazenar os alunos da academia
-*Rotina: Cadastro e edicao de alunos
-+Informacoes (nomeCampo : Descricao)
-idAluno : Código do aluno (Depois pensar se é necessário)
-dtCadastroAluno : Data de cadastro do aluno
-nmCompletoAluno : Nome completo do aluno
-dtNascimentoAluno : Data de nascimento do aluno
-rgAluno : RG do aluno
-cpfAluno : CPF do aluno
-fotoAluno : Foto do aluno
-num1ContatoAluno : Numero de contato do aluno (whatsapp ou não)
-num2ContatoAluno : Numero de contato do aluno (whatsapp ou não)
-enderecoAluno : Endereco do aluno
-bairroAluno : Bairro do aluno
-cepAluno : CEP do aluno
-cidadeAluno : Cidade do aluno
-ufAluno : Estado do aluno
-emailAluno : Email do aluno
-modalidadeExecicioAluno : Modalidade de exercicios do aluno
-turnoExercicioAluno : Turno em que o aluno irá praticar os exercicios
-statusAluno : Status do aluno (Ativo ou Inativo)
+#Informações referente ao banco de dados e seus dados
+===== Tabelas Normais ======
+*Tabela de usuários
+    -Nome: tb_usuarios_frota
+    -Comentario: Tabela para armazenar as Informações básicas do Usuário
+    -Campos
+        -cpfUsuario
+            CPF do usuário (Chave Primaria)
+        -emailUsuario
+            Email do usuário
+        -nomeUsuario
+            Nome do usuario
+        -sobrenomeUsuario
+            sobrenome do usuario
+        -senhaUsuario
+            Senha do usuario
+        -senhaUsuario
+            Se o usuário é ativo (Sim (1) | Não (0))
+        -dataCadastroUsuario
+            Data e Hora de cadastro do usuário
+        
+        -idTipoUsuario
+            O tipo do usuário (Chave estrangeira)
+        -cnpjEmpresa
+            CNPJ da empresa onde o usuario está lotado (Chave estrangeira)
+*Tabela Tipos Usuario
+    -Nome: tb_tipo_cnpj_empresa
+    -Comentario: Tabela para armazenar os Tipos de CNPJ
+    -Campos
+
+    -idTipoUsuario
+        id tipo de Usuario (chave primaria)
+    -dsTipoUsuario
+        descricao do tipo
+
+
+*Tabela Empresas
+    -Nome: tb_informacoes_empresa_frota
+    -Comentario: Tabela para armazenar as Informações básicas da Empresa
+    -Campos
+        -cnpjEmpresa
+            CNPJ da Empresa (Chave primaria)
+        -razaoSocialEmpresa
+            Razão Social da Empresa
+
+        -enderecoEmpresa
+            Endereco da Empresa
+        -numeroEmpresa
+            Numero da casa ou predio
+        -cepEmpresa
+            CEP da Empresa
+        -cidadeEmpresa
+            Cidade da Empresa
+        -bairroEmpresa
+            Bairro da Empresa
+        -ufEmpresa
+            Estado da Empresa
+        
+        -telefoneContatoEmpresa
+            Telefone de contato da Empresa
+        -numeroContatoEmpresa
+            Numero de contato da Empresa
+        -isNumeroWhatsappEmpresa
+            Se o numero é wpp (Sim (1) | Nao (0))
+        -emailEmpresa
+            Email da Empresa
+
+        -nomeResponsavelEmpresa
+            Nome do responsavel pela Empresa
+        -areaAtuacaoEmpresa
+            Area de atuação da empresa (Material de construção)
+        -isAtivaEmpresa
+            Se a Empresa estiver ativa ou não (Ativo (1) | Inativa (0))
+        -dtCadastroEmpresa
+            Data e Hora de cadastro da Empresa no sistema
+
+        -idTipoEmpresa
+            Tipo da Empresa (chave estrangeira)
+        -idTipoCnpjEmpresa
+            Tipo de CNPJ da Empresa (chave estrangeira)
+*Tabela Tipos Empresa
+    -Nome: tb_tipo_empresa
+    -Comentario: Tabela para armazenar os Tipos de Empresa
+    -Campos
+
+    -idTipoEmpresa
+        id tipo de empresa (chave primaria)
+    -dsTipoEmpresa
+        descricao do tipo
+*Tabela Tipos CNPJ Empresa
+    -Nome: tb_tipo_cnpj_empresa
+    -Comentario: Tabela para armazenar os Tipos de CNPJ
+    -Campos
+
+    -idTipoCnpjEmpresa
+        id tipo de CNPJ (chave primaria)
+    -dsTipoEmpresa
+        descricao do tipo
+
+
+*Tabela Responsavel pela Frota
+    -Nome: tb_responsavel_frota
+    -Comentario: Tabela para armazenar as Informações básicas do responsavel da Frota
+    -Campos
+        -cpfResponsavelFrota
+            Chave Primaria
+            CPF do responsavel pela Frota na Empresa
+        -nomeResponsavelFrota
+            Nome do responsavel pela Frota na Empresa
+        -emailResponsavelFrota
+            Email do responsavel pela Frota na Empresa
+        -cargoResponsavelFrota
+            Cargo do responsavel pela Frota na Empresa
+        -cnpjEmpresaResponsavelFrota
+            CNPJ da Empresa onde o funcionario está alocado
+
+
+*Tabela de Veiculos da Frota
+    -Nome: tb_veiculos_frota
+    -Comentario: Tabela para armazenar as Informações dos veiculos que irão compor a frota
+    -Campos
+        -placaVeiculoFrota
+            Placa do veiculo cadastrado e Chave primaria
+        
+        -marcaVeiculoFrota
+            Marca do veiculo cadastrado        
+        -isKitGasVeiculoFrota
+            Se o veiculo possui kit gas (Sim (1) | Nao (0))
+        -cargaMaximaPermitidaVeiculoFrota
+            Carga maxima suportada pelo veiculo cadastrado em kg
+        -rodagemInicialVeiculoFrota
+            Quilometragem inicial do veiculo cadastrado em km
+        -corVeiculoFrota
+            Cor do veiculo cadastrado
+        -anoVeiculoFrota
+            Ano de Fabricação do veiculo cadastrado
+        -ipvaVeiculoFrota
+            Pago(0) | Nao Pago (1) | Nao Possui (2)
+        -seguroVeiculoFrota
+            Pago(0) | Nao Pago (1) | Nao Possui (2)
+        -KitGasVeiculoFrota
+            Pago(0) | Nao Pago (1) | Nao Possui (2)
+        
+        -idTipoVeiculoFrota
+            Tipo do veiculo cadastrado (Chave estrangeira)
+        -tipoCombustivelVeiculoFrota
+            Tipo de combustivel (Chave estrangeira)
+*Tabela Tipos de Combustivel 
+    -Nome: tb_tipo_combustivel
+    -Comentario: Tabela para armazenar os Tipos de Combustivel
+    -Campos
+
+    -idTipoCombustivel
+        id tipo de Combustivel (chave primaria)
+    -dsTipoCombustivel
+        descricao do tipo
+*Tabela de Tipos de Veiculos da Frota
+    -Nome: tb_tipo_veiculo
+    -Comentario: Tabela para armazenar as Informações dos tipos de veiculos que irão compor a frota
+    -Campos
+        -idTipoVeiculo
+           Chave primaria
+        -categoriaTipoVeiculo
+            Categoria/Tipo do veiculo
+        -observacoesTipoVeiculo
+
+
+*Tabela Motoristas da Frota
+    -Nome: tb_motorista_forta
+    -Comentario: Tabela para armazenar as Informações dos Motoristas que irão compor a frota
+    -Campos
+
+        -cpfMotoristaFrota
+            CPF do motorista (Chave primaria)
+        -rgMotoristaFrota
+            RG do motorista
+        -nomeMotoristaFrota
+            Nome completo do motorista
+        -dataNascimentoMotoristaFrota
+            Data de Nasceimento do Motorista
+                
+        -emailMotoristaFrota
+            Email do motorista
+        -telefoneMotoristaFrota
+            Telefone do motorista
+        -isWhatsappMotoristaFrota
+            Se o telefone for wpp
+            Sim (1) | Nao (0)
+
+        -cpfDocumentoIdentificacaoCNHMotoristaFrota
+            CPF cadastrado na CNH (chave estrangeira)
+        -idEnderecoMotoristaFrota
+            id Endereco Motorista (Chave estrangeira)
+*Tabela Endereco Motoristas da Frota
+    -Nome: tb_endereco_motorista_frota
+    -Comentario: Tabela para armazenar as Informações de Endereco Motoristas
+    -Campos
+
+        -idEnderecoMotoristaFrota
+            id Endereco Motorista (Chave primaria)
+        -cepEnderecoMotoristaFrota
+            CEP Endereco Motorista
+        -ruaEnderecoMotoristaFrota
+            Rua Endereco Motorista
+        -numeroCasaEnderecoMotoristaFrota
+            Numero Casa Endereco Motorista
+        -cidadeEnderecoMotoristaFrota
+            Cidade Endereco Motorista
+        -bairroEnderecoMotoristaFrota
+            Bairro Endereco Motorista
+        -ufEnderecoMotoristaFrota
+            UF Endereco Motorista
+*Tabela CNH Motoristas da Frota
+    -Nome: tb_cnh_motorista_forta
+    -Comentario: Tabela para armazenar as Informações CNH Motoristas
+    -Campos
+
+        -cpfDocumentoIdentificacaoCNHMotoristaFrota
+            CPF cadastrado na CNH (chave primaria)
+        -isCNHVia
+            (1) Primeira Via (2) Segunda Via
+        -dataEmissaoCNHMotoristaFrota
+            Data de emissão da CNH atual
+        -dataValidadeCNHMotoristaFrota
+            Data de validade da CNH atual
+        -numeroDocumentoIdentifacaoCNHMotoristaFrota
+            Numero do documento utilizado
+        -orgaoDocumentoIdentificacaoCNHMotoristaFrota
+            Orgao expeditor do documento utilizado
+        -ufDocumentoIdentificacaoCNHMotoristaFrota
+            UF do documento utilizado
+        -numeroRegistroCNHMotoristaFrota
+            Numero da CNH
+        -categoriaCNHMotoristaFrota
+            Tipos de categoria da CNH
+            ACC (0) | A (1) | B (2) | C (3) | D (4) | E (5)
+
+
+*Tabela Oficinas
+    -Nome: tboficinas
+    -Comentario: Tabela para armazenar as Informações das Oficinas
+    -Campos
+        -idOficina
+           Chave primaria
+        -razaoSocialOficina
+            Nome/Razao Social da Oficina
+        cepEnderecoOficina
+            CEP Endereco Oficina
+        ruaEnderecoOficina
+            Rua Endereco Oficina
+        numeroCasaEnderecoOficina
+            Numero Casa EnderecoOficinaa
+        cidadeEnderecoOficina
+            Cidade Endereco Oficina
+        bairroEnderecoOficina
+            Bairro Endereco Oficina
+        ufEnderecoOficina
+            UF Endereco Oficina
+
+        -emailOficina
+            Email da Oficina
+        -telefoneOficina
+            Telefone da Oficina
+        -isWhatsappOficina
+            Se o telefone for wpp
+            Sim (1) | Nao (0)
+
+*Tabela Postos
+    -Nome: tbpostos
+    -Comentario: Tabela para armazenar as Informações dos Postos de abastecimento
+    -Campos
+        -idPosto
+           Chave primaria
+
+        -razaoSocialPosto
+            Nome/Razao Social da Posto
+        cepEnderecoPosto
+            CEP Endereco Posto
+        ruaEnderecoPosto
+            Rua Endereco Posto
+        numeroCasaEnderecoPosto
+            Numero Casa EnderecoPostoa
+        cidadeEnderecoPosto
+            Cidade Endereco Posto
+        bairroEnderecoPosto
+            Bairro Endereco Posto
+        ufEnderecoPosto
+            UF Endereco Posto
+            
+        ### Informações para o APP ###
+        -latitudeLocalizacaoPosto
+            Latidude
+        -longitudeLocalizacaoPosto
+            Longitude
+
+*Tabela Servicos de Manutencao
+    -Nome: tbservicosmanutencao
+    -Comentario: Tabela para armazenar as Informações de Servicos de Manutencao
+    -Campos
+        -idServicoManutencao
+           Chave primaria
+        -descricaoServicoManutencao
+            Descricao do servico
+
+*Tabela Causa de Defeitos
+    -Nome: tbcausadefeitos
+    -Comentario: Tabela para armazenar as Informações de causas de defeitos
+    -Campos
+        -idCausaDefeito
+           Chave primaria
+        -descricaoCausaDefeito
+            Descricao do Causa de Defeito
+
+====== Tabelas de Funcionamento Critico ========
+*Tabela Modulos do Sistema
+    -Nome: tb_modulos_sistema
+    -Comentario: Tabela para armazenar as permissoes para os modulos
+    -Campos
+        -cpfUsuarioModulo
+            CPF do usuario (Chave primaria)
+        -modUsuario
+            Cadastro, Edicao, Exclusao
+        -modEmpresa
+            Cadastro, Edicao, Exclusao
+            -cadTipoCNPJ
+                Cadastro, Edicao, Exclusao
+            -cadEmpresa
+                Cadastro, Edicao, Exclusao
+        -modMotorista
+            
+*Tabela de configurações
+    -Nome: tbconfiguracoes
+    -Comentario: Tabela para armazenar as configurações do sistema
+    -Campos de Comunicacao
+        -Campos
+            -emailPadraoConfiguracoes
+                Email padrão do sistema, ele será utilizado como remetente para o envio de emails no sistema
+            -telefoneSuporteConfiguracoes
+                Telefone padrão do sistema para entrar em contato com o suporte via wpp
+            -chaveAcessoAPIGoogleMapsConfiguracoes
+                Chave de acesso para a Api do google funcionar
+*Tabela de temas e personalização
+    -Nome: tbcustomizacoes
+    -Comentario: Tabela para armazenar as configurações do sistema em relação as customizações
+    -Campos
+        -Campos
+            -cpfUsuarioCustomizar
+                Chave Primaria
+                CPF do usuário que setou as personalizações
+            -isDarkMode
+                

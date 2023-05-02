@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  console.clear();
+  //console.clear();
   console.info("[info] - Construindo layout\n-> " + window.location.href + "\n");
   var inputPassword = document.getElementById("senhaUsuario");
   var confirmPassword = document.getElementById("senhaUsuarioConfirmar");
@@ -13,6 +13,8 @@ $(document).ready(function () {
 
   //msn();
   criarComponentesPadroes();
+  modalRender();
+  iniciarPopOuver();
   inputAtrr();
   iniciarTables();
   passwordInputMode();
@@ -23,6 +25,7 @@ $(document).ready(function () {
   btnPasswordNormal(btn_eyes2, confirmPassword, btn_eyes2_icon);
   animationTextEscrever("animado");
   erroRequisicao();
+  autoRemoveComponent();
 
 });
 /**
@@ -37,6 +40,9 @@ function verificarTamanhoTela() {
   if (window.matchMedia("(max-width: 980px)").matches) {
     buttonMenuLateral.classList.toggle("toggled");
   }
+}
+function iniciarPopOuver() {
+  $("[data-toggle=popover]").popover();
 }
 function formatarMoeda(elemento) {
   var elemento = document.getElementById(elemento.id);
@@ -242,14 +248,14 @@ function verificadorSenhas(idCampo1, idCampo2) {
         vrCampo1.style.background = "#fff";
         vrCampo2.style.background = "#fff";
         return true;
-      }else{
-        debugInfor("Complexidade da senha","Verificar a senha complexidade\nSenhas não conferem\nSenha fraca\ninferior/igual a 8 caracteres","erro", false);
+      } else {
+        debugInfor("Complexidade da senha", "Verificar a senha complexidade\nSenhas não conferem\nSenha fraca\ninferior/igual a 8 caracteres", "erro", false);
         vrCampo1.style.background = "#fd4d3d1f";
         vrCampo2.style.background = "#fd4d3d1f";
-        return false; 
+        return false;
       }
     } else {
-      debugInfor("Complexidade da senha","Verificar a senha complexidade\nSenhas não conferem\nSenha fraca\ninferior/igual a 8 caracteres","erro", false);
+      debugInfor("Complexidade da senha", "Verificar a senha complexidade\nSenhas não conferem\nSenha fraca\ninferior/igual a 8 caracteres", "erro", false);
       vrCampo1.style.background = "#fd4d3d1f";
       vrCampo2.style.background = "#fd4d3d1f";
       return false;
@@ -407,7 +413,7 @@ function formCRUD(formId, urlPOST, urlGO, retornoID, isCheckBox) {
                 setTimeout(function () {
                   window.location = URL_BASE + urlGO;
                 }, 800);
-              }else if(urlGO == "reload"){
+              } else if (urlGO == "reload") {
                 $(retornoID)
                   .addClass('alert alert-success')
                   .html('<strong>Sucesso ao realizar tarefa.</strong><br><span>redirecionando...2</span>');
@@ -422,7 +428,7 @@ function formCRUD(formId, urlPOST, urlGO, retornoID, isCheckBox) {
             } else if (retorno.trim().includes("Type: SQL ERRO")) {
               $(retornoID).addClass('alert alert-danger')
                 .html('<h5>[Erro Fatal] - FALHAR AO SALVAR REGISTRO!</h5><small><strong>Informe a TI</strong></small>');
-                exibirModal("","danger");
+              exibirModal("", "danger");
               debugInfor("FALHAR AO SALVAR REGISTRO!\n POSSIVEL CAUSA : SQL ERRO", "\n[RETORNO] : " + retorno, "erro", false);
             } else {
               debugInfor("Falha ao realizar tarefa", "Vr:" + retorno, "formDanger", false);
@@ -474,7 +480,7 @@ function formCRUD(formId, urlPOST, urlGO, retornoID, isCheckBox) {
                 setTimeout(function () {
                   window.location = URL_BASE + urlGO;
                 }, 800);
-              }else if(urlGO == "reload"){
+              } else if (urlGO == "reload") {
                 $(retornoID)
                   .addClass('alert alert-success')
                   .html('<strong>Sucesso ao realizar tarefa.</strong><br><span>redirecionando...</span>');
@@ -491,13 +497,13 @@ function formCRUD(formId, urlPOST, urlGO, retornoID, isCheckBox) {
               $(retornoID)
                 .addClass('alert alert-danger')
                 .html('<strong>Falha ao realizar tarefa.</strong>');
-            }else if(retorno.trim().includes("SQL ERRO")){
-              debugInfor("Resumo da operação: ","\nStatus: Erro \nRetorno:"+retorno, "erro", false);
+            } else if (retorno.trim().includes("SQL ERRO")) {
+              debugInfor("Resumo da operação: ", "\nStatus: Erro \nRetorno:" + retorno, "erro", false);
               $(retornoID)
                 .addClass('alert alert-danger')
                 .html('<strong>Ops... Erro ao salvar os dados, contate o suporte.</strong>');
-            }else{
-              debugInfor("Resumo da operação: ","\nStatus: Erro \nRetorno:"+retorno, "erro", false);
+            } else {
+              debugInfor("Resumo da operação: ", "\nStatus: Erro \nRetorno:" + retorno, "erro", false);
               $(retornoID)
                 .addClass('alert alert-danger')
                 .html('<strong>Ops... Erro ao salvar os dados, contate o suporte.</strong>');
@@ -593,6 +599,12 @@ function inputAtrr() {
     });
   });
 }
+function autoRemoveComponent(){
+  setTimeout(function () {
+    $('#ocultar').html("");
+    debugInfor("a","a","info")
+  }, 300);
+}
 function msn() {
   //console.clear();
   console.info("[console] - Limpo");
@@ -632,24 +644,24 @@ function exibirModal(dsTitulo, dsMensagem, tipoModal) {
   if (tipoModal == "success") {
     $('#modals').html("");
     $('#modals')
-      .html('<div class="modal fade" id="alerta1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-body"><div class="text-center"><h4><i class="fa-solid fa-triangle-exclamation fa-2x text-success"></i></h4><br><strong><span>' + dsTitulo + '</span></strong><br><br><small>'+dsMensagem+'</small><br><br><br><button type="button" class="btn btn-sm btn-block btn-success" data-dismiss="modal">fechar</button></div></div></div></div></div>');
+      .html('<div class="modal-body"><div class="container text-center"><div class="row"><div class="col-12 mb-2"><h3>'+dsTitulo+'</h3><small>'+dsMensagem+'</small></div><hr><div class="col-12 text-center"><button type="button" class="btn btn-git-color w-100" data-dismiss="modal">fechar</button></div></div></div></div>');
     $('#alerta1').modal('show');
   } else
     if (tipoModal == "warning") {
       $('#modals').html("");
       $('#modals')
-        .html('<div class="modal fade" id="alerta1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-body"><div class="text-center"><h4><i class="fa-solid fa-triangle-exclamation fa-2x text-warning"></i></h4><br><strong><span>' + dsTitulo + '</span></strong><br><br><small>'+dsMensagem+'</small><br><br><br><button type="button" class="btn btn-sm btn-block btn-warning" data-dismiss="modal">fechar</button></div></div></div></div></div>');
+        .html('<div class="modal-body"><div class="container text-center"><div class="row"><div class="col-12 mb-2"><h3>'+dsTitulo+'</h3><small>'+dsMensagem+'</small></div><hr><div class="col-12 text-center"><button type="button" class="btn text-warnig w-100" data-dismiss="modal">fechar</button></div></div></div></div>');
       $('#alerta1').modal('show');
     } else
       if (tipoModal == "danger") {
         $('#modals').html("");
         $('#modals')
-          .html('<div class="modal fade" id="alerta1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-body"><div class="text-center"><h4><i class="fa-solid fa-triangle-exclamation fa-2x text-danger"></i></h4><br><strong><span>' + dsTitulo + '</span></strong><br><br><small>'+dsMensagem+'</small><br><br><br><button type="button" class="btn btn-sm btn-block btn-danger" data-dismiss="modal">fechar</button></div></div></div></div></div>');
+          .html('<div class="modal-body"><div class="container text-center"><div class="row"><div class="col-12 mb-2"><h3>'+dsTitulo+'</h3><small>'+dsMensagem+'</small></div><hr><div class="col-12 text-center"><button type="button" class="btn text-danger w-100" data-dismiss="modal">fechar</button></div></div></div></div>');
         $('#alerta1').modal('show');
       } else {
         $('#modals').html("");
         $('#modals')
-          .html('<div class="modal fade" id="alerta1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-body"><div class="text-center"><h4><i class="fa-solid fa-triangle-exclamation fa-2x text-danger"></i></h4><br><span>[Erro] - Tipo de modal invalido!</span><br><br><button type="button" class="btn btn-sm btn-block btn-danger" data-dismiss="modal">fechar</button></div></div></div></div></div>');
+          .html('<div class="modal-body"><div class="container text-center"><div class="row"><div class="col-12 mb-2"><h3>'+dsTitulo+'</h3><small>'+dsMensagem+'</small></div><hr><div class="col-12 text-center"><button type="button" class="btn text-primary w-100" data-dismiss="modal">fechar</button></div></div></div></div>');
         $('#alerta1').modal('show');
       }
 }
@@ -682,6 +694,11 @@ function reloadComponent(Btn) {
 }
 function criarComponentesPadroes() {
   $("#componentesPadroes").html('<div id="modals"></div>');
+}
+function modalRender() {
+  if (document.getElementById("modalAlert")) {
+    $('#modalAlert').modal('show');
+  }
 }
 /**Para exibir a modal com opções em tabelas 
  * não responsivas, adicione a classe = class="tr" 
